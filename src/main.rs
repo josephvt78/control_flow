@@ -70,4 +70,14 @@ fn main() {
     }
     println!("End count = {count}");
 
+    //conditional loops with while
+    let mut number = 3;
+
+    while number != 0 {
+        println!("{number}");
+        number -= 1;
+    }
+    println!("LIFTOFF!!!");
+
+
 }
