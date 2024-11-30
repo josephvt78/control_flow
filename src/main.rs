@@ -33,4 +33,19 @@ fn main() {
     //let number = if condition { 5 } else { "six" }; //gives error compile time
 
     println!("The value of number is: {number}");
+
+    //returning values from loops
+    let mut counter = 0;
+
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+
+    // return; // if this presents the compiler gives warning about unreachable statement
+    println!("The result is {result}");
+
 }
