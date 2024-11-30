@@ -117,7 +117,78 @@ fn main() {
         2 => fahrenheit_to_celsius(),
         _ => println!("Invalid choice. Please enter 1 or 2."),
     }
+
+    //Fibonacci generator
+    println!("Fibonacci Number Generator");
+    println!("Enter the position (n) of the Fibonacci number:");
+
+    let mut input = String::new();
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read input");
+    let n: u32 = match input.trim().parse() {
+        Ok(num) => num,
+        Err(_) => {
+            println!("Please enter a valid positive integer.");
+            return;
+        }
+    };
+
+    println!("Choose the method:");
+    println!("1. Iterative");
+    println!("2. Recursive");
+    
+    let mut method = String::new();
+    io::stdin()
+        .read_line(&mut method)
+        .expect("Failed to read input");
+    let method: u32 = match method.trim().parse() {
+        Ok(num) => num,
+        Err(_) => {
+            println!("Please enter 1 or 2.");
+            return;
+        }
+    };
+
+    let fib_number = match method {
+        1 => fibonacci_iterative(n),
+        2 => fibonacci_recursive(n),
+        _ => {
+            println!("Invalid choice. Please enter 1 or 2.");
+            return;
+        }
+    };
+
+    println!("The {}th Fibonacci number is: {}", n, fib_number);
 }
+
+// Iterative approach
+fn fibonacci_iterative(n: u32) -> u64 {
+    if n == 0 {
+        return 0;
+    } else if n == 1 {
+        return 1;
+    }
+    let mut prev = 0;
+    let mut curr = 1;
+    for _ in 2..=n {
+        let next = prev + curr;
+        prev = curr;
+        curr = next;
+    }
+    curr
+}
+
+// Recursive approach
+fn fibonacci_recursive(n: u32) -> u64 {
+    if n == 0 {
+        return 0;
+    } else if n == 1 {
+        return 1;
+    }
+    fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
+}
+    
 
 fn celsius_to_fahrenheit() {
     println!("Enter temperature in Celsius:");
