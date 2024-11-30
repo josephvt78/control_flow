@@ -48,4 +48,26 @@ fn main() {
     // return; // if this presents the compiler gives warning about unreachable statement
     println!("The result is {result}");
 
+    //loop labels to disambiguate between multiple loops
+    let mut count = 0;
+    'counting_loop: loop { //loop labels to start with a single quote
+        println!("count = {count}");
+        let mut remaining = 10;
+
+        loop {
+            println!("remaining = {remaining}");
+
+            if remaining == 9 {
+                break;
+            }
+
+            if count == 2 {
+                break 'counting_loop;
+            }
+            remaining -= 1;
+        }
+        count += 1;
+    }
+    println!("End count = {count}");
+
 }
