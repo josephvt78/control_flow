@@ -8,4 +8,8 @@ fn main() {
     } else {
         println!("number greater than or equal to 10");
     }
+
+    if number != 0 { //need to have comparison operator, can't have the condition like 'if number { ... }
+        println!("number has value");
+    }
 }
